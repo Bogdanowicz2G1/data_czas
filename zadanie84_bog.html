@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stoper - Kacper Bogdanowicz 3G</title>
+	<script type="text/javascript">
+		var timer_bog;
+		var start_bog;
+		var poczatek_bog = 0;
+		var stop_bog;
+		var koniec_bog;
+		var roznica_bog;
+
+		function bogdanowicz_start() {
+			start_bog = new Date();
+			poczatek_bog = start_bog.getTime();
+			timer_bog = setInterval(function() { 
+				document.getElementById("aktualny_czas").innerHTML = new Date().toLocaleTimeString();
+			}, 1000);
+		}
+
+		function bogdanowicz_stop() {
+			stop_bog = new Date();
+			koniec_bog = stop_bog.getTime();
+			roznica_bog = koniec_bog - poczatek_bog;
+			clearInterval(timer_bog);
+			document.getElementById("pokaz1").innerHTML = roznica_bog/1000 + " s";
+		}
+	</script>
+</head>
+<body>
+	<h1>Stoper</h1>
+	<p>Aktualny czas: <span id="aktualny_czas"></span></p>
+	<form>
+		<input type="button" name="Button1" value="START stoper" onclick="bogdanowicz_start()">
+		<input type="button" name="Button2" value="STOP stoper" onclick="bogdanowicz_stop()">
+	</form>
+	<table border="1">
+		<tr>
+			<td>Czas trwania:</td>
+			<td id="pokaz1"></td>
+		</tr>
+	</table>
+</body>
+</html>
+
+</html>
